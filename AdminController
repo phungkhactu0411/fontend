@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use DB;
+class AdminController extends Controller
+{
+    public function admin_layout1(Request $Request){
+    	$email = $Request -> email;
+    	$password = md5($Request->password);
+    	$result = DB:table ('admin_users')->where('email', $email)->where('password', $password)->first();
+    	if($result) return view('admin_layout1');
+    }
+}
